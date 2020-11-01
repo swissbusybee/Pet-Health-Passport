@@ -3,10 +3,12 @@ from django.urls import reverse
 from django.utils import timezone
 from datetime import datetime
 from datetime import date
+from django.contrib.auth.models import User
 
 class FamilyGroup(models.Model):
     family_group_name = models.CharField(max_length=200)
-   
+    owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
+    
     def get_absolute_url(self):
         return reverse('familygroup-detail', args=[str(self.id)])
 
@@ -35,6 +37,7 @@ class Profile(models.Model):
     doctor_name_contact = models.CharField(max_length=200, blank=True)
     family_member_type = models.CharField(max_length=200, choices=MEMBER_CHOICES, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
     
     def get_absolute_url(self):
         return reverse('profile-detail', args=[str(self.id)])
@@ -54,6 +57,7 @@ class Immunization(models.Model):
     date_administered = models.DateField(null=True, blank=True)
     administered_by = models.CharField(max_length=200, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('immunization-detail', args=[str(self.id)])
