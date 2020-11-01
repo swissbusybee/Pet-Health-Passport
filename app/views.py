@@ -69,8 +69,12 @@ class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
     template_name_suffix = '_create_form'
-    fields = ['pet_name', 'pet_microchip_id', 'date_of_birth', 'doctor_name_contact','family_member_type']
+    fields = ['familygroup','pet_name','pet_microchip_id', 'date_of_birth', 'doctor_name_contact','family_member_type']
     success_url = "/familygroup/{familygroup_id}"
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
     
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
@@ -115,8 +119,12 @@ class ImmunizationDetailView(LoginRequiredMixin, generic.DetailView):
 class ImmunizationCreate(LoginRequiredMixin, CreateView):
     model = Immunization
     template_name_suffix = '_create_form'
-    fields = ['vaccine', 'expired_by', 'date_administered', 'administered_by']
+    fields = ['profile', 'vaccine', 'expired_by', 'date_administered', 'administered_by']
     success_url = "/profile/{profile_id}"
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 class ImmunizationUpdate(LoginRequiredMixin, UpdateView):
     model = Immunization
