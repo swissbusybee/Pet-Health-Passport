@@ -1,0 +1,75 @@
+{% include 'app/partials/base.html' %}
+
+<div class="banner"
+    style="padding: 100px 0; background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.2)),
+    url(https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80);">
+    <div class="container">
+        <div class="cards">
+            <div class="card-profile">
+                <h1>{{ profile.pet_name }} Profile</h1>
+                <p>Personal data, health and vaccination / immunization information</p>
+                <!-- <a class="btn btn-flat" href="{% url 'profile-update' profile.id %}">Upload Vaccination Card</a> -->
+                <a class="btn btn-flat" href="{% url 'familygroups' %}">Set up Alerts & Reminders</a>
+            </div>
+            {% for immunization in profile.immunization_set.all %}
+            {% if immunization.vaccine_expired %}
+            <div class="card-profile-warning">
+                <i class="fas fa-exclamation-triangle mt-3"></i>
+                <h4>Vaccination Alerts / Reminders</h4>
+                <h5>{{ immunization.vaccine.vaccine_name }} Expired: {{ immunization.expired_by }}</h5>
+            </div>
+            {% else %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="cards">
+        <div class="card">
+            <h5 class="card-header"><strong>Personal Information</strong></h5>
+            <div class="card-body">
+                <ul class="list-inline-profile">
+                    <li><strong>Pet Name:</strong> {{ profile.pet_name }}</li>
+                    <li><strong>Pet Microchip Id:</strong> {{ profile.pet_microchip_id }}</li>
+                    <li><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</li>
+                    <li><strong>Age:</strong> {{profile.calculate_age}}</li>
+                    <li><strong>Doctor Name & Contact:</strong> {{ profile.doctor_name_contact }}</li>
+                    <li><strong>Family Member:</strong> {{ profile.family_member_type }}</li>
+                </ul>
+                <a class="btn btn-flat" href="{% url 'profile-update' profile.id %}"> Edit Profile</a>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h5 class="card-header"><strong>Vaccinations / Immunizations</strong></h5>
+            <div class="card-body">
+                {% for immunization in profile.immunization_set.all %}
+                <div class="notification">
+                    <div class="notification-content text-left">
+                        <p><a href="{{ immunization.get_absolute_url }}">
+                                {{ immunization.vaccine.vaccine_name }}
+                            </a></p>
+                        <p><small>Expires: {{ immunization.expired_by }}</small></p>
+                    </div>
+                    <div class="notification-actions">
+                        <a href="{% url 'immunization-update' immunization.id %}"> Edit
+                            <i class=" fas fa-pencil-alt"></i>
+                        </a>
+                        <a href="{% url 'immunization-delete' immunization.id %}"> Delete
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                <br>
+                <a class="btn btn-flat" href="{% url 'immunization-add' %}"> Add Immunization</a>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <a class="btn btn-flat" href="{% url 'familygroup-detail' profile.familygroup.id %}">Back to Family Group</a>
+</div>

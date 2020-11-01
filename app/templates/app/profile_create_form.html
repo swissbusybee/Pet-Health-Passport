@@ -1,0 +1,17 @@
+{% include 'app/partials/base.html' %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="cards-show m-5">
+        <h5 class="card-header text-center">
+            <strong>Add New Member Profile</strong>
+        </h5>
+        <form enctype="multipart/form-data" class='form-format' method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-flat" type="submit" value="Save">
+        </form>
+    </div>
+    <hr>
+    <a class="btn btn-flat" href="{% url 'familygroups' %}">Back to Family Group</a>
+</div>

@@ -1,0 +1,53 @@
+{% include 'app/partials/base.html' %}
+
+<div class="banner-manage">
+    <div class="container text-center">
+        <h1>Vaccine Repository</h1>
+        <p>You can search for vaccines or view all below</p>
+        <a class="btn btn-flat" href="{% url 'vaccine-add' %}"> Add Vaccine</a>
+    </div>
+</div>
+
+{% if vaccine_list %}
+
+<div class="container mt-3">
+    <form action="{% url 'vaccines' %}" method="get">
+        <input type="text" name="q" value="{{ request.GET.account }}" class="form-control" />
+        <input type="submit" value="Search" class="btn btn-flat" />
+        <a class="btn btn-flat" href="{% url 'vaccines' %}"> Clear & Show All</a>
+    </form>
+    <div class="cards-show">
+        <div class="card">
+            <h5 class="card-header"><strong>Vaccines</strong></h5>
+            <table class="vaccine-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Disease Type</th>
+                    <th>Doses Required</th>
+                    <th>Actions</th>
+                </tr>
+                {% for vaccine in vaccine_list %}
+                <tr>
+                    <td><a href="{{ vaccine.get_absolute_url }}"><strong>{{ vaccine.vaccine_name }}</strong></a>
+                    </td>
+                    <td>{{ vaccine.disease_type }}</td>
+                    <td>{{ vaccine.required_doses }}</td>
+                    <td>
+                        <div class="notification-action-vaccines">
+                            <a href="{% url 'vaccine-update' vaccine.id %}">Edit <i class="fas fa-pencil-alt"></i></a>
+                            <a href="{% url 'vaccine-delete' vaccine.id %}">Delete <i class="far fa-trash-alt"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center mt-5">
+            <p>No Vaccines available</p>
+        </div>
+        {% endif %}
+    </div>
+    <hr>
+    <a class="btn btn-flat" href="{% url 'index' %}">Back to Home</a>
+</div>

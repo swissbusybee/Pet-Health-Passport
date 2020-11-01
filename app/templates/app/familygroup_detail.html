@@ -1,0 +1,40 @@
+{% include 'app/partials/base.html' %}
+{% load static %}
+
+<div class="banner-manage">
+    <div class="container text-center">
+        <h1>{{ familygroup.family_group_name }}</h1>
+        <p>View Family Member Profiles</p>
+        <!-- <a class="btn btn-flat" href="{% url 'familygroup-update' familygroup.id %}"> Edit</a>
+        <a class="btn btn-flat" href="{% url 'familygroup-delete' familygroup.id %}"> Delete</a> -->
+        <a class="btn btn-flat" href="{% url 'profile-add' %}"> Add Family Member Profile</a>
+    </div>
+</div>
+
+{% if familygroup.profile_set.all %}
+
+<div class="profile-wrapper mt-5">
+    {% for profile in familygroup.profile_set.all %}
+    <div class="notification">
+        <img src="{% static 'images/cat.png' %}" alt="Avatar" class="avatar-large" />
+        <div class="notification-content">
+            <p><strong>Pet Name:</strong><a href="{{ profile.get_absolute_url }}">
+                    {{ profile.pet_name }}
+                </a></p>
+            <p><strong>Family Member Type:</strong> {{ profile.family_member_type }}</p>
+        </div>
+
+        <div class="notification-actions color: ">
+            <a href="{% url 'profile-update' profile.id %}">Edit <i class="fas fa-pencil-alt"></i></a>
+            <a href="{% url 'profile-delete' profile.id %}">Delete <i class="far fa-trash-alt"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="text-center mt-5">
+        <p>No Family Member Profiles exist</p>
+    </div>
+    {% endif %}
+    <hr>
+    <a class="btn btn-flat" href="{% url 'familygroups' %}">Back to Family</a>
+</div>

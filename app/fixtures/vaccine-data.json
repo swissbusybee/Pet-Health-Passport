@@ -1,0 +1,42 @@
+[
+    {
+        "model": "app.vaccine",
+        "fields": {
+            "vaccine_name": "DTaP Infanrix",
+            "disease_type": "Diptheria",
+            "required_doses": "2"
+        }
+    },
+    {
+        "model": "app.vaccine",
+        "fields": {
+            "vaccine_name": "HepA",
+            "disease_type": "Hepatitis B",
+            "required_doses": "2"
+        }
+    },
+    {
+        "model": "app.vaccine",
+        "fields": {
+            "vaccine_name": "PCV13",
+            "disease_type": "Pneumococcal",
+            "required_doses": "4"
+        }
+    },
+    {
+        "model": "app.vaccine",
+        "fields": {
+            "vaccine_name": "Rotarix",
+            "disease_type": "Rotavirus",
+            "required_doses": "3"
+        }
+    },
+    {
+        "model": "app.vaccine",
+        "fields": {
+            "vaccine_name": "OPV",
+            "disease_type": "Poliomyelitis (Polio)",
+            "required_doses": "4"
+        }
+    }
+]

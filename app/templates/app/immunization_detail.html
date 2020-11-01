@@ -1,0 +1,25 @@
+{% include 'app/partials/base.html' %}
+
+<div class="container">
+    <div class="cards-show">
+        <div class="card">
+            <h5 class="card-header"><strong>{{ immunization.vaccine.vaccine_name }} Immunization / Vaccination
+                    Detail</strong>
+            </h5>
+            <div class="card-body">
+                <ul class="list-inline-profile">
+                    <li><strong>Name:</strong> <a
+                            href="{{ immunization.vaccine.get_absolute_url }}">{{ immunization.vaccine.vaccine_name }}</a>
+                    </li>
+                    <li><strong>Disease Type:</strong> {{ immunization.vaccine.disease_type }}</li>
+                    <li><strong>Date Administered:</strong> {{ immunization.date_administered }}</li>
+                    <li><strong>Administered By:</strong> {{ immunization.administered_by }}</li>
+                    <li><strong>Doses Required:</strong> {{ immunization.vaccine.required_doses }}</li>
+                    <li><strong>Expires:</strong> {{ immunization.expired_by }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <a class="btn btn-flat" href="{% url 'profile-detail' immunization.profile.id %}">Back to Profile</a>
+</div>

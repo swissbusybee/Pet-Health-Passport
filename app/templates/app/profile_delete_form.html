@@ -1,0 +1,18 @@
+{% include 'app/partials/base.html' %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="cards-show m-5">
+        <h5 class="card-header text-center">
+            <strong>Delete Member Profile for {{ object }}</strong>
+        </h5>
+        <form class='form-format' method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+    <hr>
+    <a class="btn btn-flat" href="{% url 'familygroups' %}">Back to Family Group</a>
+</div>
