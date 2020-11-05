@@ -62,6 +62,15 @@ class FamilyGroupDelete(LoginRequiredMixin, DeleteView):
 
 class ProfileListView(LoginRequiredMixin, generic.ListView):
     model = Profile
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            queryset = Profile.objects.all()
+        else:
+            try:
+                queryset = Profile.objects.all().filter(owner=self.request.user)
+            except:
+                queryset = Change.objects.none()
+        return queryset
 
 class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
     model = Profile
