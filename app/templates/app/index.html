@@ -23,7 +23,7 @@
                         <li><i class="far fa-eye fa-fw" id="icon"></i>Manage Upcoming Vaccines</li>
                     </ul>
                 </div>
-                <h5 class="card-text">Follow 4 easy steps</h5>
+                <h5 class="card-text">Follow 3 easy steps</h5>
                 <br>
                 <div class="container">
                     <div class="row">
@@ -32,16 +32,12 @@
                             <p><strong>1:</strong> Sign Up</p>
                         </div>
                         <div class="col-sm">
-                            <i class="fas fa-users fa-3x"></i>
-                            <p><strong>2:</strong> Create Family Profile</p>
-                        </div>
-                        <div class="col-sm">
                             <i class="fas fa-paw fa-3x"></i>
-                            <p><strong>3:</strong> Add Pet</p>
+                            <p><strong>2:</strong> Create Pet Profile</p>
                         </div>
                         <div class="col-sm">
                             <i class="fas fa-tasks fa-3x"></i>
-                            <p><strong>4:</strong> Add Vaccines</p>
+                            <p><strong>3:</strong> Add Vaccines</p>
                         </div>
                     </div>
                 </div>
@@ -64,7 +60,7 @@
                             </div>
                             <div class="modal-body">
                                 {% if user.is_authenticated %}
-                                <a class="btn btn-flat" href="{% url 'familygroup-add' %}">Create Family Profile</a>
+                                <a class="btn btn-flat" href="{% url 'profile-add' %}">Create Family Profile</a>
                                 {% else %}
                                 <a class="btn btn-flat" href="{% url 'signup'%}?next={{request.path}}">Signup</a>
                                 {% endif %}

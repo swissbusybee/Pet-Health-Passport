@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.urls import path
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
-from .models import FamilyGroup, Profile, Vaccine, Immunization
+from .models import Profile, Vaccine, Immunization
 
 class ProfileResource(resources.ModelResource):
     class Meta:
@@ -21,10 +21,6 @@ class ImmunizationResource(resources.ModelResource):
     class Meta:
         model = Immunization
 
-class FamilyGroupResource(resources.ModelResource):
-    class Meta:
-        model = FamilyGroup
-
 class ImmunizationInline(admin.TabularInline):
     model = Immunization
     fields = ("vaccine", "expired_by", "date_administered", "administered_by",)
@@ -33,28 +29,11 @@ class ImmunizationInline(admin.TabularInline):
 @admin.register(Profile)
 class ProfileAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ProfileResource
-    list_display = ("id", "familygroup", "pet_name", "pet_microchip_id", "date_of_birth", "doctor_name_contact", "family_member_type", "created_at", "owner",)
+    list_display = ("id", "family_name", "pet_name", "pet_microchip_id", "date_of_birth", "doctor_name_contact", "family_member_type", "created_at", "owner",)
     list_filter = ("pet_name", "pet_microchip_id", "date_of_birth", "doctor_name_contact", "family_member_type")
     search_fields = ("pet_name", "pet_microchip_id", "date_of_birth", "doctor_name_contact", "family_member_type")
     inlines = [ImmunizationInline]
     exclude = ['owner', 'familygroup']
-
-    def save_model(self, request, obj, form, change):
-        obj.owner = request.user
-        super().save_model(request, obj, form, change)
-
-class ProfileInline(admin.TabularInline):
-    model = Profile
-    fields = ("pet_name", "pet_microchip_id", "date_of_birth", "doctor_name_contact", "family_member_type",)
-    fk_name = "familygroup"
-
-@admin.register(FamilyGroup)
-class FamilyGroupAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    resource_class = FamilyGroupResource
-    list_display = ("id", "family_group_name", "owner",)
-    search_fields = ("family_group_name",)
-    inlines = [ProfileInline]
-    exclude = ['owner',]
 
     def save_model(self, request, obj, form, change):
         obj.owner = request.user

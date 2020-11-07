@@ -5,16 +5,6 @@ from datetime import datetime
 from datetime import date
 from django.contrib.auth.models import User
 
-class FamilyGroup(models.Model):
-    family_group_name = models.CharField(max_length=200)
-    owner = models.ForeignKey(User, null=True, blank=True, editable=False, on_delete=models.CASCADE)
-    
-    def get_absolute_url(self):
-        return reverse('familygroup-detail', args=[str(self.id)])
-
-    def __str__(self):
-        return self.family_group_name
-
 class Vaccine(models.Model):
     DISEASE_TYPE_CHOICES = [('Diptheria', 'Diptheria'),('Hepatitis B', 'Hepatitis B'),('Haemophilus influenzae type b', 'Haemophilus influenzae type b'),('Human papillomavirus', 'Human papillomavirus'), ('Seasonal influenza', 'Seasonal influenza'), ('Measles', 'Measles'), ('Mumps', 'Mumps'), ('Pertussis (Whooping Cough)', 'Pertussis (Whooping Cough)'), ('Rubella', 'Rubella'), ('Pneumococcal disease', 'Pneumococcal disease'), ('Poliomyelitis (Polio)', 'Poliomyelitis (Polio)'), ('Rotavirus', 'Rotavirus'), ('Tetanus', 'Tetanus'), ('Tuberculosis (TB)', 'Tuberculosis (TB)'), ('Varicella', 'Varicella')] 
     vaccine_name = models.CharField(max_length=200)
@@ -30,7 +20,7 @@ class Vaccine(models.Model):
 
 class Profile(models.Model):
     MEMBER_CHOICES = [('Dog', 'Dog'),('Cat', 'Cat'),('Other', 'Other')]
-    familygroup = models.ForeignKey(FamilyGroup, on_delete=models.CASCADE, blank=True, null=True)
+    family_name = models.CharField(max_length=200)
     pet_name = models.CharField(max_length=200)
     pet_microchip_id = models.CharField(max_length=200)
     date_of_birth = models.DateField(default=None)

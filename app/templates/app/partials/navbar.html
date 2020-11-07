@@ -33,7 +33,6 @@
                 <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false" src="{% static 'images/dog.png' %}" />
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'familygroups' %}">Manage Profiles</a>
                     <a class="dropdown-item" href="{% url 'profiles' %}">Manage Profiles</a>
                     <a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
                     <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
