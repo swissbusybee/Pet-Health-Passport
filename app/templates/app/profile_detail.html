@@ -8,8 +8,8 @@
             <div class="card-profile">
                 <h1>{{ profile.pet_name }} Profile</h1>
                 <p>Personal data, health and vaccination / immunization information</p>
-                <!-- <a class="btn btn-flat" href="{% url 'profile-update' profile.id %}">Upload Vaccination Card</a> -->
-                <a class="btn btn-flat" href="{% url 'familygroups' %}">Set up Alerts & Reminders</a>
+                <a class="btn btn-flat" href="{% url 'profile-update' profile.id %}">Upload Vaccination Card</a>
+                <a class="btn btn-flat" href="{% url 'profiles' %}">Set up Alerts & Reminders</a>
             </div>
             {% for immunization in profile.immunization_set.all %}
             {% if immunization.vaccine_expired %}
@@ -71,5 +71,5 @@
 
     </div>
     <hr>
-    <a class="btn btn-flat" href="{% url 'familygroup-detail' profile.familygroup.id %}">Back to Family Group</a>
+    <a class="btn btn-flat" href="{% url 'profiles' %}">Back to Family</a>
 </div>

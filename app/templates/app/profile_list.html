@@ -1,3 +1,41 @@
 {% include 'app/partials/base.html' %}
+{% load static %}
 
-<h1>Profiles</h1>
+<div class="banner-manage">
+    <div class="container text-center">
+        {% for profile in profile_list %}
+        {% if forloop.first %}
+        <h1>{{ profile.family_name }} Family</h1>
+        {% endif %}
+        {% endfor %}
+        <p>View Family Member Profiles</p>
+        <a class="btn btn-flat" href="{% url 'profile-add' %}"> Add Family Member Profile</a>
+    </div>
+</div>
+
+{% if profile_list %}
+
+<div class="profile-wrapper mt-5">
+    {% for profile in profile_list %}
+    <div class="notification">
+        <img src="{% static 'images/cat.png' %}" alt="Avatar" class="avatar-large" />
+        <div class="notification-content">
+            <p><strong>Pet Name:</strong><a href="{{ profile.get_absolute_url }}">
+                    {{ profile.pet_name }}
+                </a></p>
+            <p><strong>Family Member Type:</strong> {{ profile.family_member_type }}</p>
+        </div>
+
+        <div class="notification-actions color: ">
+            <a href="{% url 'profile-update' profile.id %}">Edit <i class="fas fa-pencil-alt"></i></a>
+            <a href="{% url 'profile-delete' profile.id %}">Delete <i class="far fa-trash-alt"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="text-center mt-5">
+        <p>No Profiles exist</p>
+    </div>
+    {% endif %}
+    <hr>
+</div>

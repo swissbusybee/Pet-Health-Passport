@@ -2,7 +2,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 1,
+      "family_name": "Smith",
       "pet_name": "Chico",
       "pet_microchip_id": "127274hdhr4",
       "date_of_birth": "1950-10-25",
@@ -13,7 +13,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 1,
+      "family_name": "Smith",
       "pet_name": "Buddy",
       "pet_microchip_id": "174746fbbfg",
       "date_of_birth": "1950-10-25",
@@ -24,7 +24,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 2,
+      "family_name": "Smith",
       "pet_name": "Felix",
       "pet_microchip_id": "66582737hbx",
       "date_of_birth": "1950-10-25",
@@ -35,7 +35,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 2,
+      "family_name": "Smith",
       "pet_name": "Peanut",
       "pet_microchip_id": "35468456ogv",
       "date_of_birth": "1950-10-25",
@@ -46,7 +46,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 3,
+      "family_name": "Smith",
       "pet_name": "Max",
       "pet_microchip_id": "936353gxgdg",
       "date_of_birth": "1950-10-25",
@@ -57,7 +57,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 3,
+      "family_name": "Smith",
       "pet_name": "Sheba",
       "pet_microchip_id": "66432677bb",
       "date_of_birth": "1950-10-25",
@@ -68,7 +68,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 4,
+      "family_name": "Smith",
       "pet_name": "Sam",
       "pet_microchip_id": "15365758686h",
       "date_of_birth": "1950-10-25",
@@ -79,7 +79,7 @@
   {
     "model": "app.profile",
     "fields": {
-      "familygroup": 4,
+      "family_name": "Smith",
       "pet_name": "Drogon",
       "pet_microchip_id": "394076efcbc6",
       "date_of_birth": "1950-10-25",
