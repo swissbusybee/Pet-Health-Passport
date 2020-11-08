@@ -10,6 +10,9 @@ from .forms import UserRegisterForm
 from django.http import HttpResponse
 from django.db.models import Q
 from .models import Profile, Vaccine, Immunization
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
+from django.conf import settings
 
 def index(request):
     return render(request, 'app/index.html')
@@ -40,6 +43,17 @@ class ProfileListView(LoginRequiredMixin, generic.ListView):
 
 class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
     model = Profile
+    send_mail(
+    'Hello from Health Passport',
+    'Hello there, This is an automated message.',
+    settings.EMAIL_HOST_USER,
+    # recipient_list = request.user.email
+    ['healthpassport10@gmail.com'],
+    fail_silently=False,
+    # send_mail(subject, message, email_from, recipient_list, fail_silently=False)
+    # return HttpResponse("Email sent to you")
+    # return render(request, 'profile_detail.html')
+)
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
