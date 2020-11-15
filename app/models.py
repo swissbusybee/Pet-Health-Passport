@@ -56,6 +56,6 @@ class Immunization(models.Model):
         return self.vaccine.vaccine_name 
 
     def vaccine_expired(self):
-        return self.expired_by < datetime.now().date()
+        return self.expired_by < datetime.now().date()  
 
 
