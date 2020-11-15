@@ -13,6 +13,8 @@ from .models import Profile, Vaccine, Immunization
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.conf import settings
+from datetime import datetime
+from datetime import date
 
 def index(request):
     return render(request, 'app/index.html')
@@ -22,6 +24,14 @@ def about(request):
 
 def contact(request):
     return render(request, 'app/contact.html')
+
+def sendmail(request):
+    subject = 'Hello from Health Passport'
+    message = 'Hello there, This is an automated message.'
+    from_email = settings.EMAIL_HOST_USER
+    to_list = ['healthpassport10@gmail.com']
+    send_mail(subject, message, from_email, to_list, fail_silently=False)
+    return HttpResponse("Mail has been sent. Please check your mail. Thank YOU!")
 
 class SignUpView(generic.CreateView):
     form_class = UserRegisterForm
@@ -43,17 +53,6 @@ class ProfileListView(LoginRequiredMixin, generic.ListView):
 
 class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
     model = Profile
-    send_mail(
-    'Hello from Health Passport',
-    'Hello there, This is an automated message.',
-    settings.EMAIL_HOST_USER,
-    # recipient_list = request.user.email
-    ['healthpassport10@gmail.com'],
-    fail_silently=False,
-    # send_mail(subject, message, email_from, recipient_list, fail_silently=False)
-    # return HttpResponse("Email sent to you")
-    # return render(request, 'profile_detail.html')
-)
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
@@ -104,6 +103,11 @@ class ImmunizationListView(LoginRequiredMixin, generic.ListView):
 
 class ImmunizationDetailView(LoginRequiredMixin, generic.DetailView):
     model = Immunization
+
+    def alert_email(self):
+        if self.expired_by < datetime.now().date():
+            send_mail('Alert from Health Passport', 'Your Vaccine Expired', settings.EMAIL_HOST_USER, ['healthpassport10@gmail.com'], fail_silently=False)
+        return super().alert_email()
  
 class ImmunizationCreate(LoginRequiredMixin, CreateView):
     model = Immunization
