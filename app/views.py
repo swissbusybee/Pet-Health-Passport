@@ -29,8 +29,7 @@ def sendmail(request):
     subject = 'Hello from Health Passport'
     message = 'Hello there, This is an automated message.'
     from_email = settings.EMAIL_HOST_USER
-    to_list = ['healthpassport10@gmail.com']
-    send_mail(subject, message, from_email, to_list, fail_silently=False)
+    send_mail(subject, message, from_email, [request.user.email], fail_silently=False)
     return HttpResponse("Mail has been sent. Please check your mail. Thank YOU!")
 
 class SignUpView(generic.CreateView):
@@ -103,11 +102,6 @@ class ImmunizationListView(LoginRequiredMixin, generic.ListView):
 
 class ImmunizationDetailView(LoginRequiredMixin, generic.DetailView):
     model = Immunization
-
-    def alert_email(self):
-        if self.expired_by < datetime.now().date():
-            send_mail('Alert from Health Passport', 'Your Vaccine Expired', settings.EMAIL_HOST_USER, ['healthpassport10@gmail.com'], fail_silently=False)
-        return super().alert_email()
  
 class ImmunizationCreate(LoginRequiredMixin, CreateView):
     model = Immunization

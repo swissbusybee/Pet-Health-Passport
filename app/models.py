@@ -39,7 +39,7 @@ class Profile(models.Model):
         today = date.today()
         age = today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
         return age
-        
+      
 class Immunization(models.Model):
     vaccine = models.ForeignKey(Vaccine, on_delete=models.CASCADE, blank=True, null=True) 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)    
@@ -57,4 +57,5 @@ class Immunization(models.Model):
 
     def vaccine_expired(self):
         return self.expired_by < datetime.now().date()
+
 

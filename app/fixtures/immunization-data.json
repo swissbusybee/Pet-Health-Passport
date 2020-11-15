@@ -24,7 +24,7 @@
     "fields": {
       "vaccine": 3,
       "profile": 4,
-      "expired_by": "2022-10-25",
+      "expired_by": "2020-10-25",
       "date_administered": "2009-11-01",
       "administered_by": "Dr. Qyburn"
     }
