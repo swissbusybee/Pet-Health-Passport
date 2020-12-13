@@ -25,6 +25,13 @@
 
 <body>
     {% include 'app/partials/navbar.html' %}
+    <main>
+        <div class="container">
+            {% include 'app/partials/messanging.html' %}
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
 </body>
 
 <!-- Optional JavaScript -->

@@ -39,6 +39,12 @@ class Profile(models.Model):
         today = date.today()
         age = today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
         return age
+
+    def profile_exists_by_owner(self):
+        if self.objects.filter(owner=self.request.user).exists():
+            return True
+        else:
+            return False
       
 class Immunization(models.Model):
     vaccine = models.ForeignKey(Vaccine, on_delete=models.CASCADE, blank=True, null=True) 

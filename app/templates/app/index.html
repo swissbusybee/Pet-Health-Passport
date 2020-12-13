@@ -60,7 +60,7 @@
                             </div>
                             <div class="modal-body">
                                 {% if user.is_authenticated %}
-                                <a class="btn btn-flat" href="{% url 'profile-add' %}">Create Family Profile</a>
+                                <a class="btn btn-flat" href="{% url 'profile-add' %}">Create Pet Profile</a>
                                 {% else %}
                                 <a class="btn btn-flat" href="{% url 'signup'%}?next={{request.path}}">Signup</a>
                                 {% endif %}
@@ -71,7 +71,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
