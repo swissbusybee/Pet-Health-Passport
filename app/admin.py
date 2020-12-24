@@ -59,6 +59,6 @@ class ImmunizationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Vaccine)
 class VaccineAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = VaccineResource
-    list_display = ("id", "vaccine_name", "required_doses","created_at")
-    list_filter = ("vaccine_name", "required_doses")
-    search_fields = ("vaccine_name", "required_doses")
+    list_display = ("id", "vaccine_name", "created_at")
+    list_filter = ("vaccine_name",)
+    search_fields = ("vaccine_name",)

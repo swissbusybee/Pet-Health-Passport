@@ -6,10 +6,8 @@ from datetime import date
 from django.contrib.auth.models import User
 
 class Vaccine(models.Model):
-    DISEASE_TYPE_CHOICES = [('Diptheria', 'Diptheria'),('Hepatitis B', 'Hepatitis B'),('Haemophilus influenzae type b', 'Haemophilus influenzae type b'),('Human papillomavirus', 'Human papillomavirus'), ('Seasonal influenza', 'Seasonal influenza'), ('Measles', 'Measles'), ('Mumps', 'Mumps'), ('Pertussis (Whooping Cough)', 'Pertussis (Whooping Cough)'), ('Rubella', 'Rubella'), ('Pneumococcal disease', 'Pneumococcal disease'), ('Poliomyelitis (Polio)', 'Poliomyelitis (Polio)'), ('Rotavirus', 'Rotavirus'), ('Tetanus', 'Tetanus'), ('Tuberculosis (TB)', 'Tuberculosis (TB)'), ('Varicella', 'Varicella')] 
-    vaccine_name = models.CharField(max_length=200)
-    disease_type = models.CharField(max_length=200, choices=DISEASE_TYPE_CHOICES, blank=True)
-    required_doses = models.CharField(max_length=200)
+    DISEASE_TYPE_CHOICES = [('Canine parainfluenza virus', 'Canine parainfluenza virus'),('Canine Bordetella bronchiseptica', 'Canine Bordetella bronchiseptica'),('Canine Leptospira', 'Canine Leptospira'),('Canine Borrelia', 'Canine Borrelia'), ('Canine enteric coronavirus', 'Canine enteric coronavirus'), ('Canine distemper virus', 'Canine distemper virus'), ('Canine adenovirus', 'Canine adenovirus'), ('Canine parvovirus type 2', 'Canine parvovirus type 2'), ('Canine Rabies virus', 'Canine Rabies virus'), ('Feline parvovirus', 'Feline parvovirus'), ('Feline leukaemia virus', 'Feline leukaemia virus'), ('Feline infectious peritonitis', 'Feline infectious peritonitis'), ('Feline herpesvirus type 1', 'Feline herpesvirus type 1'), ('Feline Chlamydia felis', 'Feline Chlamydia felis'), ('Feline calicivirus', 'Feline calicivirus'), ('Feline Bordetella', 'Feline Bordetella'), ('Feline Rabies virus', 'Feline Rabies virus'), ('Feline immunodeficiency virus', 'Feline immunodeficiency virus')] 
+    vaccine_name = models.CharField(max_length=200, choices=DISEASE_TYPE_CHOICES, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def get_absolute_url(self):

@@ -121,13 +121,13 @@ class VaccineDetailView(LoginRequiredMixin, generic.DetailView):
 class VaccineCreate(LoginRequiredMixin, CreateView):
     model = Vaccine
     template_name_suffix = '_create_form'
-    fields = ['vaccine_name', 'disease_type', 'required_doses']
+    fields = ['vaccine_name']
     success_url = reverse_lazy('vaccines')
 
 class VaccineUpdate(LoginRequiredMixin, UpdateView):
     model = Vaccine
     template_name_suffix = '_update_form'
-    fields = ['vaccine_name', 'disease_type', 'required_doses']
+    fields = ['vaccine_name']
     success_url = reverse_lazy('vaccines')
 
 class VaccineDelete(LoginRequiredMixin, DeleteView):

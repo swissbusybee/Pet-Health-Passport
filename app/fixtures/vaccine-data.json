@@ -1,42 +1,110 @@
 [
-    {
-        "model": "app.vaccine",
-        "fields": {
-            "vaccine_name": "DTaP Infanrix",
-            "disease_type": "Diptheria",
-            "required_doses": "2"
-        }
-    },
-    {
-        "model": "app.vaccine",
-        "fields": {
-            "vaccine_name": "HepA",
-            "disease_type": "Hepatitis B",
-            "required_doses": "2"
-        }
-    },
-    {
-        "model": "app.vaccine",
-        "fields": {
-            "vaccine_name": "PCV13",
-            "disease_type": "Pneumococcal",
-            "required_doses": "4"
-        }
-    },
-    {
-        "model": "app.vaccine",
-        "fields": {
-            "vaccine_name": "Rotarix",
-            "disease_type": "Rotavirus",
-            "required_doses": "3"
-        }
-    },
-    {
-        "model": "app.vaccine",
-        "fields": {
-            "vaccine_name": "OPV",
-            "disease_type": "Poliomyelitis (Polio)",
-            "required_doses": "4"
-        }
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine parainfluenza virus"
     }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine Bordetella bronchiseptica"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine Leptospira"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine Borrelia"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine enteric coronavirus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine distemper virus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine adenovirus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine parvovirus type 2"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Canine Rabies virus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline parvovirus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline leukaemia virus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline infectious peritonitis"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline herpesvirus type 1"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline Chlamydia felis"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline calicivirus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline Bordetella"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline Rabies virus"
+    }
+  },
+  {
+    "model": "app.vaccine",
+    "fields": {
+      "vaccine_name": "Feline immunodeficiency virus"
+    }
+  }
 ]
