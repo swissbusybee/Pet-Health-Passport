@@ -1,1 +1,1 @@
-web: gunicorn pet-health-passport.wsgi
+web: gunicorn pethealthpassport.wsgi

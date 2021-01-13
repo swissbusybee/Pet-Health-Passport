@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'health_passport_pet.urls'
+ROOT_URLCONF = 'pethealthpassport.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -92,7 +92,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-WSGI_APPLICATION = 'pet-health-passport.wsgi.application'
+WSGI_APPLICATION = 'pethealthpassport.wsgi.application'
 
 
 # Database
