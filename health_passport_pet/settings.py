@@ -92,7 +92,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-WSGI_APPLICATION = 'health_passport_pet.wsgi.application'
+WSGI_APPLICATION = 'pet-health-passport.wsgi.application'
 
 
 # Database
