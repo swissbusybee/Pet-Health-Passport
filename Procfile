@@ -1,0 +1,1 @@
+web: gunicorn pet-health-passport.wsgi
