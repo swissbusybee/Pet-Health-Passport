@@ -1,3 +1,12 @@
+#### Health Passport 
+
+A secure digital and vaccination tracker that helps people stay organized with
+their vaccinations and critical health information.
+
+http://www.healthpassport.ch/
+
+Developer Notes: 
+
 python3 -m venv venv
 source venv/bin/activate
 python manage.py makemigrations
